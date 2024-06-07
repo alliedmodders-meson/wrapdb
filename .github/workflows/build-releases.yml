@@ -1,0 +1,36 @@
+name: Build releases
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [subprojects/**]
+
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  build_releases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install python dependencies
+        run: |
+          python -m pip install packaging requests
+
+      - name: Build releases
+        run: |
+          python .scripts/build-releases.py --repo ${{ github.repository }} --token ${{ secrets.GITHUB_TOKEN }}

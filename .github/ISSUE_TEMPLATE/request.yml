@@ -1,0 +1,27 @@
+name: Request
+description: I want to request the creation/update/deletion of a package.
+labels:
+  - request
+body:
+  - type: input
+    id: info
+    attributes:
+      label: Link to the information
+      description: Provide a link to the page where we can get information about the content.
+    validations:
+      required: true
+
+  - type: input
+    id: content
+    attributes:
+      label: Link to the content
+      description: Provide a link to the page where we can get the content.
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description (optional)
+    validations:
+      required: false

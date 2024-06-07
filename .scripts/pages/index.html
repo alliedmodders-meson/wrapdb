@@ -1,0 +1,80 @@
+{% set title = 'AM Meson WrapDB' %}
+{% set org_name = repo.split('/')[0] %}
+{% set repo_name = repo.split('/')[1] %}
+{% set org_url = 'https://github.com/{}'.format(org_name) %}
+{% set repo_url = 'https://github.com/{}'.format(repo) %}
+{% set page_url = 'https://{}.github.io/{}'.format(org_name, repo_name) %}
+<!doctype html>
+<html lang="en" class="h-100" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <meta property="og:title" content="{{ title }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="{{ page_url }}" />
+    <meta property="og:image" content="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"/>
+    <link rel="shortcut icon" type="image/x-icon" href="https://github.com/favicon.ico">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        a {
+            text-decoration: none;
+        }
+        body {
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100 container">
+
+<header>
+    <div class="d-flex flex-column flex-md-row align-items-center pt-4 pb-3 mb-4 border-bottom">
+        <a href="{{ repo_url }}" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+            <span class="fs-3">{{ title }}</span>
+        </a>
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" target="_blank" href="{{ org_url }}">Organization</a>
+            <a class="me-3 py-2 link-body-emphasis text-decoration-none" target="_blank" href="{{ repo_url }}">Repository</a>
+            <a class="py-2 link-body-emphasis text-decoration-none" target="_blank" href="{{ repo_url }}/releases">Advanced search</a>
+        </nav>
+    </div>
+</header>
+
+<main class="pb-3 mb-4">
+    <div class="table-responsive">
+        <table class="table table-bordered text-center">
+            <thead class="align-middle">
+                <tr>
+                    <th scope="col">Package</th>
+                    <th scope="col">Versions</th>
+                    <th scope="col">Dependency names</th>
+                    <th scope="col">Program names</th>
+                </tr>
+            </thead>
+            <tbody class="align-middle">
+                {% for package, package_data in data.items() %}
+                <tr>
+                    <th scope="row">
+                        <a href="{{ get_download_url(repo, '{}_{}'.format(package, package_data.versions[0]), '{}.wrap'.format(package)) }}">{{ package }}</a>
+                    </th>
+                    <td>
+                        {% for version in package_data.versions %}
+                        <a href="{{ get_download_url(repo, '{}_{}'.format(package, version), '{}.wrap'.format(package)) }}">{{ version }}</a><br>
+                        {% endfor %}
+                    </td>
+                    <td>{{ '<br>'.join(package_data.dependency_names) if package_data.dependency_names else '' }}</td>
+                    <td>{{ '<br>'.join(package_data.program_names) if package_data.program_names else '' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer class="footer mt-auto py-4 text-center text-muted border-top">
+    <span>&copy; 2024 <a class="text-muted" href="{{ org_url }}" target="_blank">{{ org_name }}</a></span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
