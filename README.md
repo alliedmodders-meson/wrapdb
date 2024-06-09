@@ -1,6 +1,6 @@
 # WrapDB
 
-This is the unofficial Meson WrapDB, which provides access to projects related to [AlliedModders](https://github.com/alliedmodders) developments.\
+This is the unofficial Meson WrapDB, which provides access to projects related to [AlliedModders LLC](https://github.com/alliedmodders) developments.\
 All available packages can be found on [this page](https://alliedmodders-meson.github.io/wrapdb).
 
 ## How to contribute
