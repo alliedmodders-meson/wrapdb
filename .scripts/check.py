@@ -69,6 +69,12 @@ class Script(unittest.TestCase):
         with self.subTest('check config'):
             self.assertEqual(header.name, 'wrap-file')
 
+            # required keys
+            self.assertIn('source_url', header)
+            self.assertIn('source_hash', header)
+            self.assertIn('source_filename', header)
+
+            # prohibited keys
             self.assertNotIn('patch_url', header)
             self.assertNotIn('patch_hash', header)
             self.assertNotIn('patch_filename', header)
