@@ -1,0 +1,11 @@
+[wrap-file]
+wrapdb_version = 2024.06.17
+
+directory = hl2sdk-id-2024.06.17
+
+source_url = https://github.com/alliedmodders-meson/hl2sdk-id/archive/refs/tags/2024.06.17.zip
+source_filename = hl2sdk-id-2024.06.17.zip
+source_hash = FD874E9CBDFF4713E1465C3907A884C04D6E9F9991389A420DFBE3411CD1D88C
+
+[provide]
+hl2sdk-id-d = d_dep
