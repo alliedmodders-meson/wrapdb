@@ -64,7 +64,7 @@ class Script(unittest.TestCase):
                 for provision_type, provision_names in provision.items():
                     for provision_name in provision_names:
                         with self.subTest('check provision naming', provision_type=provision_type):
-                            self.assertRegex(provision_name, fr'^{file.stem}-[a-z0-9-]+$')
+                            self.assertRegex(provision_name, fr'^{file.stem}$|^{file.stem}-[a-z0-9-]+$')
 
         with self.subTest('check config'):
             self.assertEqual(header.name, 'wrap-file')
