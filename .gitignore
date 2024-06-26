@@ -1,19 +1,5 @@
-# global
 .idea
 .vscode
 __pycache__
 
-# root
-/builddir
 /_pages
-
-# subprojects
-/subprojects/*
-!/subprojects/.gitkeep
-!/subprojects/*.wrap
-!/subprojects/packagefiles
-
-# subprojects/packagesfiles
-/subprojects/packagefiles/*
-!/subprojects/packagefiles/.gitkeep
-!/subprojects/packagefiles/*/

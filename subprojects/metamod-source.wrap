@@ -1,0 +1,12 @@
+[wrap-file]
+wrapdb_version = 2.0.1293
+
+directory = metamod-source-cc8c76cca183a97db32886a26c410d5dc5cce8dc
+patch_directory = metamod-source
+
+source_url = https://github.com/alliedmodders/metamod-source/archive/cc8c76cca183a97db32886a26c410d5dc5cce8dc.zip
+source_filename = metamod-source-cc8c76cca183a97db32886a26c410d5dc5cce8dc.zip
+source_hash = 2706FC52DE3A4E49C87FA44942B882BB20CDFE85A6C3DD08529C599491ED3BE7
+
+[provide]
+metamod-source = g_dep
